@@ -1,0 +1,64 @@
+#include<stdio.h>
+#include<conio.h>
+void merge(int a[],int min,int mid,int max)
+{
+	int t[30],i,j,k,m;
+	j=min;
+	m=mid+1;
+	for(i=min;j<=mid&&m<=max;i++)
+	{
+		if(a[j]<a[m])
+		{
+			t[i]=a[j];
+			j++;
+		}
+		else
+		{
+			t[i]=a[m];
+			m++;
+		}
+	}
+	if(j>mid)
+	{
+		for(k=m;k<=max;k++)
+		 {
+		 	t[i]=a[k];
+		 	i++;
+		 }
+	}
+	else
+	{
+		for(k=j;k<=mid;k++)
+		{
+			t[i]=a[k];
+			i++;
+		}
+	}
+	for(k=min;k<=max;k++)
+	  a[k]=t[k];
+}
+void sort(int a[],int min,int max)
+{
+	int mid;
+	if(min<max)
+	{
+		mid=(min+max)/2;
+		sort(a,min,mid);
+		sort(a,mid+1,max);
+		merge(a,min,mid,max);
+	}
+}
+void main()
+{
+	int a[30],s,i;
+	printf("Enter the number of values to be sorted\n");
+	scanf("%d",&s);
+	printf("Enter the values :  ");
+	for(i=0;i<s;i++)
+	  scanf("%d",&a[i]);
+	sort(a,0,s-1);
+	printf("The sorted values are \n");
+	for(i=0;i<s;i++)
+	  printf("%d\t",a[i]);  
+}
+	
