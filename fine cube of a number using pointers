@@ -1,0 +1,15 @@
+#include <stdio.h>
+void cube(int x,int* c)
+{
+	int i=0;
+     *c=x*x*x;
+ }
+
+void main()
+{
+	int n,cu;
+	printf("Enter any number\n");
+	scanf("%d",&n);
+	cube(n,&cu);
+	printf("cube of the given number = %d\t ",cu);
+}
