@@ -1,0 +1,31 @@
+#include <stdio.h>
+#include<math.h>
+void main()
+{
+  float a[30],mean ,sum=0,std,sumstd=0,*ptr;
+  int n,i;
+  printf("Enter number os elements\n");
+  scanf("%d",&n);
+  printf("Enter the elements \n");
+  for(i=0;i<n;i++)
+    {
+      scanf("%f",&a[i]);
+      ptr=a;
+    }
+  for(i=0;i<n;i++)
+    {
+      sum+=*ptr;
+      ptr++;
+    }
+  mean=sum/n;
+  ptr=a;
+  for(i=0;i<n;i++)
+    {
+      sumstd=sumstd+pow((*ptr-mean),2);
+      ptr++;
+    }
+  std=sqrt(sumstd/n);
+  printf("Sum   = %f",sum);
+  printf("Mean  = %f",mean);
+  printf("Standard deviation = %f",std);
+}
